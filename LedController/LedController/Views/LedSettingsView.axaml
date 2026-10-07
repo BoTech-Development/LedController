@@ -1,0 +1,150 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:avalonia="using:Material.Icons.Avalonia"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:LedController.ViewModels"
+             xmlns:ledvms="using:LedController.ViewModels.Leds"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             x:Class="LedController.Views.LedSettingsView"
+             x:DataType="viewmodels:LedSettingsViewModel">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" 
+                    Margin="10">
+            <materialIcons:MaterialIcon Kind="LightbulbMultiple"
+                                        IconSize="48"/>
+            <TextBlock Text="Your LED's"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"/>
+        </StackPanel>
+        <ItemsControl ItemsSource="{Binding LedViewModels}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.DataTemplates>
+                <DataTemplate DataType="ledvms:TimeRgbLedViewModel">
+                    <StackPanel Orientation="Vertical" Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <materialIcons:MaterialIcon Kind="LampsOutline"
+                                                        IconSize="48"/>
+                            <TextBlock Text="Time-RGB-LED"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Label Target="LedBrightness" 
+                               Content="Brightness:" 
+                               Margin="0,10,0,0"/>
+                        <Slider Minimum="0" 
+                                Maximum="1.0" 
+                                Value="{Binding SelectedBrightness}"
+                                x:Name="LedBrightness"/>
+                        <StackPanel>
+                            <TextBlock Text="Color: "/>
+                            <ColorPicker Theme="{DynamicResource SimpleColorPicker}" 
+                                         Color="{Binding Color}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,10,0,0">
+                            <materialIcons:MaterialIcon Kind="LedOn"
+                                                        IconSize="28"
+                                                        Margin="0,0,10,0"/>
+                            <TimePicker UseSeconds="True" 
+                                        VerticalAlignment="Center"
+                                        SelectedTime="{Binding TurnOnTime}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,10,0,0">
+                            <materialIcons:MaterialIcon Kind="LedOff"
+                                                        IconSize="28"
+                                                        Margin="0,0,10,0"/>
+                            <TimePicker UseSeconds="True" 
+                                        VerticalAlignment="Center"
+                                        SelectedTime="{Binding TurnOffTime}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate DataType="ledvms:TimeLedViewModel">
+                    <StackPanel Orientation="Vertical" Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <materialIcons:MaterialIcon Kind="OutdoorLamp"
+                                                        IconSize="48"/>
+                            <TextBlock Text="Time-LED"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Label Target="LedBrightness" 
+                               Content="Brightness:" />
+                        <Slider Minimum="0" 
+                                Maximum="1.0" 
+                                Value="{Binding SelectedBrightness}"
+                                x:Name="LedBrightness"/>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,10,0,0">
+                            <materialIcons:MaterialIcon Kind="LedOn"
+                                                        IconSize="28"
+                                                        Margin="0,0,10,0"/>
+                            <TimePicker UseSeconds="True" 
+                                        VerticalAlignment="Center"
+                                        SelectedTime="{Binding TurnOnTime}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,10,0,0">
+                            <materialIcons:MaterialIcon Kind="LedOff"
+                                                        IconSize="28"
+                                                        Margin="0,0,10,0"/>
+                            <TimePicker UseSeconds="True" 
+                                        VerticalAlignment="Center"
+                                        SelectedTime="{Binding TurnOffTime}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate DataType="ledvms:LedViewModel">
+                    <StackPanel Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <materialIcons:MaterialIcon Kind="CeilingLight"
+                                                        IconSize="48"/>
+                            <TextBlock Text="LED"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Label Target="LedBrightness" 
+                               Content="Brightness:" />
+                        <Slider Minimum="0" 
+                                Maximum="1.0" 
+                                Value="{Binding SelectedBrightness}"
+                                Width="128"
+                                x:Name="LedBrightness"/>
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate DataType="ledvms:RgbLedViewModel">
+                    <StackPanel Orientation="Vertical" Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <materialIcons:MaterialIcon Kind="LedOutline"
+                                                        IconSize="48"/>
+                            <TextBlock Text="RGB-LED"
+                                       FontSize="20"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Label Target="LedBrightness" 
+                               Content="Brightness:" />
+                        <Slider Minimum="0" 
+                                Maximum="1.0" 
+                                Value="{Binding SelectedBrightness}"
+                                x:Name="LedBrightness"/>
+                        <ColorPicker Theme="{DynamicResource SimpleColorPicker}" 
+                                     Color="{Binding Color}"/>
+                    </StackPanel>
+                </DataTemplate>
+
+            </ItemsControl.DataTemplates>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

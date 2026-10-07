@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="LedController/LedController.Android/LedController.Android.csproj" />
+  <Project Path="LedController/LedController.Browser/LedController.Browser.csproj" />
+  <Project Path="LedController/LedController.Desktop/LedController.Desktop.csproj" />
+  <Project Path="LedController/LedController.iOS/LedController.iOS.csproj" />
+  <Project Path="LedController/LedController/LedController.csproj" />
+</Solution>
